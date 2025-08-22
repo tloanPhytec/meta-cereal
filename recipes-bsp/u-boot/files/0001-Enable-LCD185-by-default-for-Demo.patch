@@ -1,0 +1,23 @@
+From 9abb11cf84420cc1aaeeda717018c5a45e6f6566 Mon Sep 17 00:00:00 2001
+From: tloan <tloan@phytec.com>
+Date: Thu, 21 Aug 2025 22:29:55 +0000
+Subject: [PATCH] Enable LCD185 by default for Demo
+
+Signed-off-by: tloan <tloan@phytec.com>
+---
+ board/phytec/phycore_am62x/phycore_am62x.env | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/board/phytec/phycore_am62x/phycore_am62x.env b/board/phytec/phycore_am62x/phycore_am62x.env
+index 65ef231a463..c0e1d3b0709 100644
+--- a/board/phytec/phycore_am62x/phycore_am62x.env
++++ b/board/phytec/phycore_am62x/phycore_am62x.env
+@@ -27,3 +27,5 @@ get_cmd=tftp
+ spi_fdt_addr=0x700000
+ spi_image_addr=0x800000
+ spi_ramdisk_addr=0x1e00000
++
++overlays=k3-am62-phyboard-lyra-oldi-lcd185.dtbo
+-- 
+2.25.1
+
