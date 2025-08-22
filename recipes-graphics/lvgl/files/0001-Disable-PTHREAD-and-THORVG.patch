@@ -1,0 +1,55 @@
+From 566e5725271e902ad5d6218f501a0dc673da64d5 Mon Sep 17 00:00:00 2001
+From: tloan <tloan@phytec.com>
+Date: Fri, 22 Aug 2025 17:30:24 +0000
+Subject: [PATCH] Disable PTHREAD and THORVG
+
+Signed-off-by: tloan <tloan@phytec.com>
+---
+ CMakeLists.txt | 9 +--------
+ lv_conf.h      | 4 ++--
+ 2 files changed, 3 insertions(+), 10 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5d629df..61bfa73 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -12,13 +12,6 @@ target_include_directories(lvgl PUBLIC ${PROJECT_SOURCE_DIR})
+ 
+ add_executable(main main.c BigNumberFont3.c)
+ 
+-include(${CMAKE_CURRENT_LIST_DIR}/lvgl/tests/FindLibDRM.cmake)
+-include_directories(${Libdrm_INCLUDE_DIRS})
+-
+-find_package(SDL2)
+-find_package(SDL2_image)
+-include_directories(${SDL2_INCLUDE_DIRS} ${SDL2_IMAGE_INCLUDE_DIRS})
+-
+-target_link_libraries(main lvgl lvgl::examples lvgl::demos lvgl::thorvg ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES} ${Libdrm_LIBRARIES} m pthread)
++target_link_libraries(main lvgl)
+ add_custom_target (run COMMAND ${EXECUTABLE_OUTPUT_PATH}/main DEPENDS main)
+ 
+diff --git a/lv_conf.h b/lv_conf.h
+index 6613571..cbaa6ec 100644
+--- a/lv_conf.h
++++ b/lv_conf.h
+@@ -78,7 +78,7 @@
+  * - LV_OS_RTTHREAD
+  * - LV_OS_WINDOWS
+  * - LV_OS_CUSTOM */
+-#define LV_USE_OS   LV_OS_PTHREAD
++#define LV_USE_OS   LV_OS_NONE
+ 
+ #if LV_USE_OS == LV_OS_CUSTOM
+     #define LV_OS_CUSTOM_INCLUDE <stdint.h>
+@@ -693,7 +693,7 @@
+ #define LV_USE_VECTOR_GRAPHIC  1
+ 
+ /* Enable ThorVG (vector graphics library) from the src/libs folder */
+-#define LV_USE_THORVG_INTERNAL 1
++#define LV_USE_THORVG_INTERNAL 0
+ 
+ /* Enable ThorVG by assuming that its installed and linked to the project */
+ #define LV_USE_THORVG_EXTERNAL 0
+-- 
+2.25.1
+
