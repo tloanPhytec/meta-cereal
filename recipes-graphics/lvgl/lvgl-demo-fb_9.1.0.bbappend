@@ -2,6 +2,7 @@ FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
 SRC_URI += "file://0001-Modify-default-example-for-PHYTEC-Food-Drive.patch \
             file://0001-Disable-PTHREAD-and-THORVG.patch \
+            file://0001-am67-adjust-for-touch-screen-controller-event1.patch \
             file://lvgl-demo.service \
             file://cereal_bowl-labeled.png  \
             file://PHYTEC-logo.png \

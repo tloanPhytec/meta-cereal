@@ -1,0 +1,26 @@
+From 5cf29bcfa6598f250058a3d1ce5526a94b172351 Mon Sep 17 00:00:00 2001
+From: tloan <tloan@phytec.com>
+Date: Wed, 5 Nov 2025 23:44:51 +0000
+Subject: [PATCH] am67: adjust for touch screen controller event1
+
+Signed-off-by: tloan <tloan@phytec.com>
+---
+ main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/main.c b/main.c
+index c451997..ff498b5 100644
+--- a/main.c
++++ b/main.c
+@@ -82,7 +82,7 @@ static const char *lv_linux_get_touch_node(const char *default_node)
+ 
+ static void lv_linux_input_init(lv_display_t *disp)
+ {
+-    const char *node = lv_linux_get_touch_node("/dev/input/event2");
++    const char *node = lv_linux_get_touch_node("/dev/input/event1");
+     lv_indev_t *touch = lv_evdev_create(LV_INDEV_TYPE_POINTER, node);
+     if(touch) {
+         lv_indev_set_display(touch, disp);   // bind to this display
+-- 
+2.34.1
+
