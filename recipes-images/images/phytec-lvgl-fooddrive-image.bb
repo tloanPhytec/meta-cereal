@@ -1,6 +1,9 @@
 require recipes-images/images/phytec-headless-image.bb
 
-IMAGE_INSTALL:append = " lvgl-demo-fb"
+IMAGE_INSTALL:append = " \
+	lvgl-demo-fb \
+	packagegroup-base \
+"
 
 IMAGE_FEATURES += "\
     ssh-server-openssh \
@@ -15,4 +18,4 @@ remove_tty1_service () {
     rm -f ${IMAGE_ROOTFS}/etc/systemd/system/getty.target.wants/getty@tty1.service
 }
 
-COMPATIBLE_MACHINE .= "|phyboard-lyra-am62xx-3"
+COMPATIBLE_MACHINE .= "|phyboard-rigel-am67xx-1"
